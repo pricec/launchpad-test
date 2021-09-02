@@ -1,0 +1,35 @@
+apiVersion: "launchpad.mirantis.com/mke/v1.3"
+kind: "mke"
+spec:
+  hosts:
+  - privateInterface: "ens5"
+    role: "manager"
+    ssh:
+      address: "18.159.214.108"
+      keyPath: "./ssh_keys/mke.pem"
+      user: "ubuntu"
+  - privateInterface: "ens5"
+    role: "worker"
+    ssh:
+      address: "3.67.193.33"
+      keyPath: "./ssh_keys/mke.pem"
+      user: "ubuntu"
+  - privateInterface: "ens5"
+    role: "worker"
+    ssh:
+      address: "52.59.190.185"
+      keyPath: "./ssh_keys/mke.pem"
+      user: "ubuntu"
+  - privateInterface: "ens5"
+    role: "worker"
+    ssh:
+      address: "18.185.86.179"
+      keyPath: "./ssh_keys/mke.pem"
+      user: "ubuntu"
+  mke:
+    version: "3.4.0"
+    adminPassword: "dockeradmin"
+    adminUsername: "admin"
+    installFlags:
+    - "--default-node-orchestrator=kubernetes"
+    - "--san=mke-master-lb-c3d9476c6886189f.elb.eu-central-1.amazonaws.com"
